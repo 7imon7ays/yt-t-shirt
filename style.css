@@ -1,5 +1,6 @@
 body {
   background-color: #0F4D92;
+  color: white;
 }
 
 #content {
@@ -14,14 +15,16 @@ section {
 }
 
 ul {
-  color: white;
   list-style-type: none;
 }
 
 h1 {
-  color: white;
   -webkit-margin-before: 0em;
   -webkit-margin-after: 0em;
   font-size: 62px;
+}
+
+.italicized {
+  font-style: italic;
 }
 

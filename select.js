@@ -1,5 +1,6 @@
 (function () {
-  var styleOptionLinks = $(".style-option"),
+  var $content = $("#content")
+      styleOptionLinks = $(".style-option"),
       styleOptionList = $("ul#style-options");
 
   createOptionsList();
@@ -7,6 +8,10 @@
   $("input[type='radio']").on("change", function(e) {
     var selectedStyle = $(e.target).val();
     changeStyle(selectedStyle);
+  });
+
+  $("#italic").on("change", function(e) {
+    $content.toggleClass('italicized');
   });
 
   function changeStyle (selectedStyle) {
@@ -34,7 +39,7 @@
       return $("<li>").append(input).append(label)[0];
     });
 
-    styleOptionList.append(styleInputs);
+    styleOptionList.prepend(styleInputs);
   }
 
   function _formatStyleName(styleName) {
