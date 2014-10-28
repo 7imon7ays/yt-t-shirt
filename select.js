@@ -1,11 +1,11 @@
 (function () {
-  var $content = $("#content")
-      styleOptionLinks = $(".style-option"),
-      styleOptionList = $("ul#style-options");
+  var $content = $("#content"),
+      $styleOptionLinks = $(".style-option"),
+      $styleOptionList = $("ul#style-options");
 
   createOptionsList();
 
-  $("input[type='radio']").on("change", function(e) {
+  $("select").on("change", function(e) {
     var selectedStyle = $(e.target).val();
     changeStyle(selectedStyle);
   });
@@ -15,31 +15,35 @@
   });
 
   function changeStyle (selectedStyle) {
-    var activeStyleLink = styleOptionLinks.filter("link[rel='stylesheet']")[0],
-        selectedStyleLink = styleOptionLinks.filter("." + selectedStyle)[0];
+    var activeStyleLink = $styleOptionLinks.filter("link[rel='stylesheet']")[0],
+        selectedStyleLink = $styleOptionLinks.filter("." + selectedStyle)[0];
 
     activeStyleLink.rel = "";
     selectedStyleLink.rel = "stylesheet";
   }
 
   function createOptionsList () {
-    var styleInputs = $.map(styleOptionLinks, function(style, idx) {
+    var $listItem = $("<li>"),
+        $selectMenu = $("<select>");
+
+    var styleOptions = $.map($styleOptionLinks, function(style, idx) {
       var styleName = $(style).data('name'),
           styleNamePretty = _formatStyleName(styleName);
-          input = $("<input>"),
-          label = $("<label>");
+          $option = $("<option>"),
 
-      input.attr({
-        type: 'radio', name: 'stylesheet', value: styleName, id: styleName
+      $option.attr({
+        value: styleName, id: styleName
       });
-      label.attr('for', styleName).text(styleNamePretty);
 
-      if (idx === 0) input.attr('checked', true);
+      $option.text(styleNamePretty);
+      if (idx === 0) $option.attr('selected', true);
 
-      return $("<li>").append(input).append(label)[0];
+      return $option;
     });
 
-    styleOptionList.prepend(styleInputs);
+    $selectMenu.append(styleOptions);
+    $listItem.append($selectMenu);
+    $styleOptionList.append($listItem);
   }
 
   function _formatStyleName(styleName) {
