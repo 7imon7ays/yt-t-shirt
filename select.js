@@ -1,17 +1,29 @@
 (function () {
   var $content = $("#content"),
+      $textSpans = $content.find("span.text"),
+      $latinTechSpan = $textSpans.filter(".latin > .tech"),
+      $morseTechSpan = $textSpans.filter(".morse > .tech"),
       $styleOptionLinks = $(".style-option"),
       $styleOptionList = $("ul#style-options");
 
   createOptionsList();
 
-  $("select").on("change", function(e) {
+  $styleOptionList.find("select").on("change", function(e) {
     var selectedStyle = $(e.target).val();
     changeStyle(selectedStyle);
   });
 
-  $("#italic").on("change", function(e) {
+  $styleOptionList.find("#italic").on("change", function(e) {
     $content.toggleClass('italicized');
+  });
+
+  $styleOptionList.find("#block").on("change", function(e) {
+    $textSpans.toggleClass('display-block');
+  });
+
+  $styleOptionList.find("#offset").on("change", function(e) {
+    $latinTechSpan.toggleClass('offset-big');
+    $morseTechSpan.toggleClass('offset-small');
   });
 
   function changeStyle (selectedStyle) {

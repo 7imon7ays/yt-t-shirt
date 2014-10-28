@@ -3,6 +3,10 @@ body {
   color: white;
 }
 
+ul {
+  list-style-type: none;
+}
+
 #content {
   position: relative;
   top: 50%;
@@ -14,17 +18,23 @@ section {
   padding: 5%;
 }
 
-ul {
-  list-style-type: none;
-}
-
-h1 {
-  -webkit-margin-before: 0em;
-  -webkit-margin-after: 0em;
-  font-size: 62px;
+span {
+  font-size: 10vw;
 }
 
 .italicized {
   font-style: italic;
+}
+
+.display-block {
+  display: block;
+}
+
+.offset-small {
+  padding-left: 8%;
+}
+
+.offset-big {
+  padding-left: 15%;
 }
 
