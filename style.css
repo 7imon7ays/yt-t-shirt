@@ -12,6 +12,7 @@ ul {
   top: 50%;
   transform: translateY(-50%);
   text-align: center;
+  display: inline;
 }
 
 section {
@@ -26,8 +27,8 @@ span {
   font-style: italic;
 }
 
-.display-block {
-  display: block;
+.hidden {
+  display: none;
 }
 
 .offset-small {

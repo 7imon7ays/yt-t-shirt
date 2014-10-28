@@ -1,5 +1,6 @@
 (function () {
   var $content = $("#content"),
+      $newLines = $content.find(".newline"),
       $textSpans = $content.find("span.text"),
       $latinTechSpan = $textSpans.filter(".latin > .tech"),
       $morseTechSpan = $textSpans.filter(".morse > .tech"),
@@ -17,8 +18,8 @@
     $content.toggleClass('italicized');
   });
 
-  $styleOptionList.find("#block").on("change", function(e) {
-    $textSpans.toggleClass('display-block');
+  $styleOptionList.find("#single-line").on("change", function(e) {
+    $newLines.toggleClass('hidden');
   });
 
   $styleOptionList.find("#offset").on("change", function(e) {
